@@ -1,0 +1,65 @@
+package com.OHRM;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
+
+public class LoginTest extends BaseTest
+
+{
+	@Test(priority=1)
+	public void loginPanel_Validation() throws IOException
+	{
+		String expected_LoginPanelText="LOGIN Panel";
+		
+		String actual_LoginPanelText=driver.findElement(By.id("logInPanelHeading")).getText();
+		
+		System.out.println("the actuL login panel text :"+actual_LoginPanelText);
+		
+		FileInputStream file=new FileInputStream(".//src//com//ApplicationTestData//OHRM_LoginTestData.xlsx");
+		
+		XSSFWorkbook workbook=new XSSFWorkbook(file);
+		
+		XSSFSheet sheet=workbook.getSheet("Sheet2");
+		
+		int rowcount=sheet.getLastRowNum();
+		
+		if(actual_LoginPanelText.equals(expected_LoginPanelText))
+		{
+			System.out.println("The Login Panel Text is Matched - PASS");
+			
+			for(int i=1;i<rowcount;i++)
+			{
+				Row row=sheet.getRow(i);
+				
+				WebElement userName=driver.findElement(By.id("txtUsername"));
+				
+				userName.sendKeys(row.getCell(0).getStringCellValue());
+				
+				WebElement password=driver.findElement(By.id("txtPassword"));
+				
+				password.sendKeys(row.getCell(1).getStringCellValue());
+				
+				WebElement login_Button=driver.findElement(By.id("btnLogin"));
+				
+				login_Button.click();
+			}
+			
+			
+			}
+		
+		else if()
+		{
+			
+		}
+	}
+	
+	
+	
+}

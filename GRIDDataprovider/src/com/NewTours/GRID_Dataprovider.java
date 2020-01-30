@@ -1,0 +1,105 @@
+package com.NewTours;
+
+import java.io.IOException;
+import java.net.URL;
+
+import org.apache.commons.io.filefilter.TrueFileFilter;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+public class GRID_Dataprovider
+
+{
+	@DataProvider(parallel=true)
+
+	public Object[][] getData()
+	{
+		Object[][] data=new Object[2][3];
+		
+		data[0][0]="tutorial";
+		data[0][1]="tutorial";
+		data[0][2]="chrome";
+		
+		
+		data[1][0]="tutorial";
+		data[1][1]="tutorial";
+		data[1][2]="firefox";
+		
+		return data;
+				
+	}
+	
+	@Test(dataProvider="getData")
+	public void NewTours_LogInTest(String UserName,String Password,String browser) throws IOException, InterruptedException
+	{
+
+	System.out.println("The name of the Browser is : "+browser);
+
+
+	DesiredCapabilities cap = null;
+
+	if(browser.equalsIgnoreCase("chrome"))
+	{
+	cap= DesiredCapabilities.chrome();
+	cap.setBrowserName("chrome");
+	cap.setPlatform(Platform.WINDOWS);
+	}
+	else
+	if(browser.equalsIgnoreCase("firefox"))
+	{
+	cap = DesiredCapabilities.firefox();
+	cap.setBrowserName("firefox");
+	cap.setPlatform(Platform.WINDOWS);
+	}
+
+	// connecting to the Remote Hub Server - to move to the nodes to perform the task
+
+	RemoteWebDriver driver = new RemoteWebDriver(new URL("http://10.0.0.21:4444/wd/hub"),cap);
+
+	String url="http://newtours.demoaut.com";
+
+	driver.get(url);
+	
+	WebElement userName=driver.findElement(By.name("userName"));
+	userName.clear();
+	userName.sendKeys(UserName);
+	
+	WebElement password=driver.findElement(By.name("password"));
+	password.clear();
+	password.sendKeys(Password);
+	
+	WebElement signIn=driver.findElement(By.name("login"));
+	signIn.click();
+	
+	Thread.sleep(10000);
+	
+	String expected_HomePageTitle="Find";
+	System.out.println("The expected Title of the New Tours Home Page is:"
+	+expected_HomePageTitle);
+
+	String actual_WebPageTitle=driver.getTitle();
+	System.out.println(" The actual title of the NewTours WebPage is :"+actual_WebPageTitle );
+
+	if(actual_WebPageTitle.contains(expected_HomePageTitle))
+	{
+	System.out.println(" LogIN Successfull - PASS");
+	
+	}
+	else
+	{
+	System.out.println(" LogIn Failed - FAIL");
+	
+	}
+
+	driver.quit();
+
+	}
+	
+
+	
+}

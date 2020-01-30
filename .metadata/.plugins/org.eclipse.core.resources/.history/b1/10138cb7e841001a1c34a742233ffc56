@@ -1,0 +1,27 @@
+package com.NewTours;
+
+public class NewTours_LoginTest
+
+{
+	@Dataprovider()
+
+	public Object[][] getData()
+	{
+		Object[][] data=new Object[2][3];
+		
+		data[0][0]="tutorial";
+		data[0][1]="'tutorial";
+		data[0][2]="chrome";
+		
+		
+		data[1][0]="tutorial";
+		data[1][1]="'tutorial";
+		data[1][2]="firefox";
+		
+		return data;
+				
+				
+	}
+	
+	
+}

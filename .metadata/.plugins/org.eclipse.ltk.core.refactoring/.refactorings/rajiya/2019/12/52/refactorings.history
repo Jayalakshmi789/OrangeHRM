@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;rajiya.Practice.java&apos; to &apos;DuplicatesInArray.java&apos;&#x0D;&#x0A;- Original project: &apos;rajiya&apos;&#x0D;&#x0A;- Original element: &apos;rajiya.Practice.java&apos;&#x0D;&#x0A;- Renamed element: &apos;rajiya.DuplicatesInArray.java&apos;" description="Rename compilation unit &apos;Practice.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;rajiya{Practice.java" name="DuplicatesInArray.java" references="false" stamp="1577016258911" version="1.0"/>
+</session>

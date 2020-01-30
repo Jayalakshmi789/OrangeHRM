@@ -1,0 +1,14 @@
+package com.demoo;
+
+ class Pract {
+	public static void main(String[] args) {
+		
+	
+	String s1="demo";
+	 s1=new String("demo");
+	if(s1.equals(s1)){
+		System.out.println(s1==s1);
+		
+	}
+ }
+ }

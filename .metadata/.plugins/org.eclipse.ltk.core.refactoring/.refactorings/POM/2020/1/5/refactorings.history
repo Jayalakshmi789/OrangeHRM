@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;GRIDDataprovider&apos;&#x0D;&#x0A;- Original project: &apos;POM&apos;&#x0D;&#x0A;- Destination element: &apos;GRIDDataprovider&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     driverFiles&#x0D;&#x0A;     Library" description="Copy folders" destination="=GRIDDataprovider" element1="driverFiles" element2="Library" files="0" flags="589830" folders="2" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1580227274159" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,11 @@
+package com.demoo;
+
+ class Pract {
+	
+	public static void main(String[] args) {
+		float f1=1.2f;
+		float f2=1;
+		System.out.println(f1*f2==1.2);
+	}
+
+}

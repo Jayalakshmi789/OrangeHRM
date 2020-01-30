@@ -1,0 +1,78 @@
+package com.OHRM;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
+
+public class LoginTest extends BaseTest
+
+{
+	@Test(priority=1)
+	public void loginPanel_Validation() throws IOException
+	{
+		String expected_LoginPanelText="LOGIN Panel";
+		
+		String actual_LoginPanelText=driver.findElement(By.id("logInPanelHeading")).getText();
+		
+		System.out.println("the actuL login panel text :"+actual_LoginPanelText);
+		
+		FileInputStream file=new FileInputStream(".//src//com//ApplicationTestData//OHRM_LoginTestData.xlsx");
+		
+		XSSFWorkbook workbook=new XSSFWorkbook(file);
+		
+		XSSFSheet sheet=workbook.getSheet("Sheet2");
+		
+			if(actual_LoginPanelText.equals(expected_LoginPanelText))
+		{
+			System.out.println("The Login Panel Text is Matched - PASS");
+		
+				Row row=sheet.getRow(1);
+				
+				WebElement userName=driver.findElement(By.id("txtUsername"));
+				
+				userName.clear();
+				
+				userName.sendKeys(row.getCell(0).getStringCellValue());
+				
+				WebElement password=driver.findElement(By.id("txtPassword"));
+				
+				password.clear();
+				
+				password.sendKeys(row.getCell(1).getStringCellValue());
+				
+				WebElement login_Button=driver.findElement(By.id("btnLogin"));
+				
+				login_Button.click();
+				
+				driver.navigate().back();
+				
+				Cell cell2= row.createCell(2);
+				
+				cell2.setCellValue("Pass");
+				
+				
+		         }
+			
+		}
+		
+		
+			FileOutputStream file1=new FileOutputStream("./src/com/ApplicationResultData/OHRM_LginTestDataResults.xlsx");
+			workbook.write(file1);
+			
+			}
+		
+		
+	
+}

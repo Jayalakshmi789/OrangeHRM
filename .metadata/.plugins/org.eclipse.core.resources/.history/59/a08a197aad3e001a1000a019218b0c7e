@@ -1,0 +1,12 @@
+package com.demoo;
+
+ class Pract {
+	
+	String s1="demo";
+	String s1=new String();
+	if(s1.equals(s2)){
+		System.out.println(s2);
+		
+	}
+ }
+

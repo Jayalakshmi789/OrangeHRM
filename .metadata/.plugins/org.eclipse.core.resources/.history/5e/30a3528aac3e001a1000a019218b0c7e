@@ -1,0 +1,8 @@
+package com.demoo;
+
+public class Pract {
+	float f1=1.2f;
+	float f2=1;
+	
+	System.out.println(array.get(i));
+}

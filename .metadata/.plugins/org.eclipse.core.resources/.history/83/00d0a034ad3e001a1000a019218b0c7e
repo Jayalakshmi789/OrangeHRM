@@ -1,0 +1,8 @@
+package com.demoo;
+
+ class Pract {
+	
+	String s1="demo";
+	}
+
+}

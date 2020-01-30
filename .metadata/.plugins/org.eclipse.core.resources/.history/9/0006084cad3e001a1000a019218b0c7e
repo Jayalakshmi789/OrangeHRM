@@ -1,0 +1,11 @@
+package com.demoo;
+
+ class Pract {
+	
+	String s1="demo";
+	String s2=new String("demo");
+	if(s1.equals(s2)){
+		
+	}
+	}
+
